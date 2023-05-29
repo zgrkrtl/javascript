@@ -1,0 +1,45 @@
+
+*Javascript has 5 data types that are passed by value: 
+Boolean, null, undefined, String, and Number. We’ll call these primitive types.
+
+
+*Javascript has 3 data types that are passed by reference: 
+Array, Function, and Object. These are all technically Objects, so we’ll refer to them collectively as Objects.
+
+*When we assign these variables to other variables using =, we copy the value to the new variable. 
+They are copied by value.Changing one does not change the other. 
+Think of the variables as having no relationship to each other.
+
+Objects
+*Variables that are assigned a non-primitive value are given a reference to that value. 
+That reference points to the object’s location in memory. 
+The variables don’t actually contain the value.
+
+-------
+
+function changeAgeAndReference(person) {
+    person.age = 25;
+    person = {
+        name: 'John',
+        age: 50
+    };
+    
+    return person;
+}
+var personObj1 = {
+    name: 'Alex',
+    age: 30
+};
+var personObj2 = changeAgeAndReference(personObj1);
+console.log(personObj1); // -> ?
+console.log(personObj2); // -> ?
+
+-------
+
+console.log(personObj1); // -> { name: 'Alex', age: 25 }
+console.log(personObj2); // -> { name: 'John', age: 50 }
+
+
+The function first changes the property age on the original object it was passed in. 
+It then reassigns the variable to a brand new object and returns that object. 
+Here’s what the two objects are logged out.
